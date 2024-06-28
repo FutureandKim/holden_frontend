@@ -18,15 +18,15 @@ const ShowSomeDay = ({ date }) => {
       }
     };
 
-    if (date) { // Ensure date is not empty or undefined before fetching
+    if (date) {
       fetchRecords();
     }
-  }, [date]); // Fetch records whenever date changes
+  }, [date]);
 
   return (
     <div>
       <div>
-        {records.length > 0 ? ( // Check if records array has elements
+        {records.length > 0 ? ( 
           records.map(record => (
             <div key={record.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px 0', borderRadius: '2px' }}>
             <p><strong>카테고리:</strong> {record.category}</p>
@@ -37,7 +37,7 @@ const ShowSomeDay = ({ date }) => {
             </div>
           ))
         ) : (
-          <p>기록이 없습니다.</p> // Render if records array is empty
+          <p>기록이 없습니다.</p>
         )}
       </div>
     </div>

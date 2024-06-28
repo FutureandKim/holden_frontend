@@ -58,14 +58,14 @@ const FindBtn = styled.button`
 
 const Day = () => {
   const [selectedDate, setSelectedDate] = useState('');
-  const [showRecords, setShowRecords] = useState(false); // State to toggle showing records
+  const [showRecords, setShowRecords] = useState(false);
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
 
   const handleFindBtnClick = () => {
-    setShowRecords(true); // Show records when button is clicked
+    setShowRecords(true);
   };
 
   return (
@@ -84,10 +84,10 @@ const Day = () => {
             <FindBtn onClick={handleFindBtnClick}>찾아보기</FindBtn>
           </LeftContainer>
           <RightContainer>
-            {showRecords && ( // Render ShowSomeDay only if showRecords is true
+            {showRecords && ( 
               <>
                 <Text>선택한 날짜의 기록</Text>
-                <ShowSomeDay date={selectedDate} /> {/* Pass selectedDate to ShowSomeDay */}
+                <ShowSomeDay date={selectedDate} /> {}
               </>
             )}
             {!showRecords && (
