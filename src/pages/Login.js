@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { KAKAO_AUTH_URL } from '../components/auth/kakaoLogin';
+import { KAKAO_AUTH_URL } from '../api/auth/kakaoLogin';
 
 const Container = styled.div`
   height: 100vh;
