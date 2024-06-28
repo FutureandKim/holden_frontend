@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { TodayRecord} from '../api/auth/TodayRecord';
+import { TodayRecord } from '../api/auth/TodayRecord';
 
 const Container = styled.div`
   width: 500px;
@@ -90,7 +90,10 @@ export default function CreateNew() {
   const handleUserInput = async () => {
     try {
       const now = new Date();
-      const today = now.toISOString().split('T')[0]; // YYYY-MM-DD
+       // 한국날짜 기준
+      const today = `${now.getFullYear()}-${
+        now.getMonth() + 1  < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1
+      }-${now.getDate() < 10 ? `0${now.getDate()}` : now.getDate()}`;
       const whatTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
 
       const data = {
@@ -103,9 +106,10 @@ export default function CreateNew() {
       };
 
       const response = await TodayRecord(data);
-      console.log("Record created successfully:", response);
+      alert('기록이 성공적으로 저장되었습니다.');
+      console.log('Record created successfully:', response);
     } catch (error) {
-      console.error("Failed to create record:", error);
+      console.error('Failed to create record:', error);
     }
   };
 
@@ -149,6 +153,7 @@ export default function CreateNew() {
           />
           <Line />
           <Btn onClick={handleUserInput}>기록하기</Btn>
+
         </Form>
       </Container>
     </>

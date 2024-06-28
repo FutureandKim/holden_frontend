@@ -12,12 +12,40 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
+        <Route
+          path='/'
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
         <Route path='/login' element={<Login />} />
         <Route path='/user/kakao/callback' element={<LoginRedirectHandler />} />
-        <Route path='/day' element={<PrivateRoute><Day /></PrivateRoute>} />
-        <Route path='/quiz' element={<PrivateRoute><Quiz /></PrivateRoute>} />
-        <Route path='/stretching' element={<PrivateRoute><Stretching /></PrivateRoute>} />
+        <Route
+          path='/day'
+          element={
+            <PrivateRoute>
+              <Day />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/quiz'
+          element={
+            <PrivateRoute>
+              <Quiz />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/stretching'
+          element={
+            <PrivateRoute>
+              <Stretching />
+            </PrivateRoute>
+          }
+        />
         <Route path='*' element={<div>Not Found</div>} />
       </Routes>
     </BrowserRouter>
