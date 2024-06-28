@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
+import ShowTodayRecord from '../components/ShowTodayRecord';
 
 const Container = styled.div`
   margin: 0 17% 0 17%;
@@ -67,7 +68,8 @@ const Day = () => {
             <FindBtn>찾아보기</FindBtn>
           </LeftContainer>
           <RightContainer>
-            <Text>오늘의 기록을 써보세요</Text>
+            <Text>오늘 기록</Text>
+            <ShowTodayRecord />
           </RightContainer>
         </Div>
       </Container>

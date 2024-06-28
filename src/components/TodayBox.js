@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { TodayRecord} from '../api/auth/TodayRecord';
 
 const Container = styled.div`
   width: 500px;
@@ -48,11 +48,16 @@ const Input = styled.input`
   font-size: 20px;
 `;
 
-const Textarea = styled.textarea`
+const Select = styled.select`
   margin-top: 10px;
   padding: 10px;
   border: 1px solid #e3e3e3;
   border-radius: 8px;
+  font-size: 20px;
+`;
+
+const Option = styled.option`
+  font-size: 20px;
 `;
 
 const Btn = styled.button`
@@ -60,7 +65,7 @@ const Btn = styled.button`
   height: 70px;
   margin-top: 20px;
   padding: 15px 20px;
-  font-size: 18px;
+  font-size: 25px;
   border-radius: 12px;
   border: 1px solid #e3e3e3;
   color: #fff;
@@ -70,15 +75,38 @@ const Btn = styled.button`
 `;
 
 export default function CreateNew() {
+  const [categoryList, setCategoryList] = useState([
+    '아침',
+    '점심',
+    '저녁',
+    '기타 활동',
+  ]);
   // 사용자가 입력한 내용 추출
-  const [what, setWhat] = useState(''); // 무엇을 했는지
-  const [food, setFood] = useState(''); // 무엇을 먹었는지
+  const [category, setCategory] = useState(''); // 무엇을 했는지
+  const [what, setWhat] = useState(''); // 무엇을 먹었는지
   const [who, setWho] = useState(''); // 누구랑 했는지
   const [where, setWhere] = useState(''); // 어디서 했는지
-  const [special, setSpecial] = useState(''); // 특별한 일이 있었는지
 
-  const handleUserInput = () => {
-    console.log(what, food, who, where, special);
+  const handleUserInput = async () => {
+    try {
+      const now = new Date();
+      const today = now.toISOString().split('T')[0]; // YYYY-MM-DD
+      const whatTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
+
+      const data = {
+        today,
+        category,
+        whatIs: what,
+        whoIs: who,
+        whereIs: where,
+        whatTime,
+      };
+
+      const response = await TodayRecord(data);
+      console.log("Record created successfully:", response);
+    } catch (error) {
+      console.error("Failed to create record:", error);
+    }
   };
 
   return (
@@ -87,17 +115,25 @@ export default function CreateNew() {
         <Title>하루 기록하기</Title>
         <Line />
         <Form>
-          <Label>지금 뭐하시나요?</Label>
+          <Label>무엇을 했나요?</Label>
+          <Select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <Option value='' disabled>
+              카테고리를 선택하세요
+            </Option>
+            {categoryList.map((cat) => (
+              <Option key={cat} value={cat}>
+                {cat}
+              </Option>
+            ))}
+          </Select>
+          <Label>무엇을 했나요? / 무슨 음식을 먹었나요?</Label>
           <Input
             type='text'
             value={what}
             onChange={(e) => setWhat(e.target.value)}
-          />
-          <Label>무엇을 먹었나요?</Label>
-          <Input
-            type='text'
-            value={food}
-            onChange={(e) => setFood(e.target.value)}
           />
           <Label>누구랑 했나요?</Label>
           <Input
@@ -111,13 +147,8 @@ export default function CreateNew() {
             value={where}
             onChange={(e) => setWhere(e.target.value)}
           />
-          <Label>특별한 일이 있었나요?</Label>
-          <Textarea
-            value={special}
-            onChange={(e) => setSpecial(e.target.value)}
-          />
           <Line />
-          <Btn onClick={handleUserInput}>하루 기록하기</Btn>
+          <Btn onClick={handleUserInput}>기록하기</Btn>
         </Form>
       </Container>
     </>

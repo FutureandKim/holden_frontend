@@ -16,7 +16,7 @@ const ProFileContainer = styled.div`
   text-align: center;
   border-radius: 12px;
   border: 1px solid #e3e3e3;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
 `;
 
@@ -55,11 +55,13 @@ const LinkStyled = styled(Link)`
 `;
 
 export default function ProfileBox() {
+  const name = localStorage.getItem('name');
+  const profile_image = localStorage.getItem('profileImage');
   return (
     <Container>
       <ProFileContainer>
-        <Image src={Profile.result.member.profileImage} alt='profile' />
-        <Name>{Profile.result.member.nickname}</Name>
+        <Image src={profile_image} alt='profile' />
+        <Name>{name}</Name>
       </ProFileContainer>
       <LinkStyled to='/day'>
         <Btn>하루 기록</Btn>
