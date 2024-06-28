@@ -1,10 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import Webcam from "react-webcam";
 
 const Container = styled.div`
+display: flex;
+justify-content: center;
+margin-top: 50px;
 `;
 
 const PageName = styled.div`
+`;
+
+const Img = styled.img`
+height: 400px;
+margin-right: 50px;
 `;
 
 const poses = [
@@ -29,9 +38,8 @@ const Pose = () => {
     return (
         <>
             <Container>
-                <PageName>포즈</PageName>
-                <img src={getRandomPose()} alt="포즈" />
-                
+                <Img src={getRandomPose()} alt="포즈" />
+                <Webcam height={400}/>
             </Container>
         </>
     );
