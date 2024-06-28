@@ -64,7 +64,7 @@ export default function ProfileBox() {
         <Name>{name}</Name>
       </ProFileContainer>
       <LinkStyled to='/day'>
-        <Btn>하루 기록</Btn>
+        <Btn>하루 돌아보기</Btn>
       </LinkStyled>
       <LinkStyled to='/quiz'>
         <Btn>하루 퀴즈</Btn>
