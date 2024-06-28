@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Profile from '../api/json/Profile.json';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -39,12 +39,12 @@ const Btn = styled.button`
   font-size: 40px;
   border-radius: 12px;
   margin-top: 25px;
-  background: #FFF;
+  background: #fff;
   border: 1px solid #e3e3e3;
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     background: rgba(43, 95, 136, 0.14);
   }
 `;
@@ -57,15 +57,19 @@ const LinkStyled = styled(Link)`
 export default function ProfileBox() {
   return (
     <Container>
-    <ProFileContainer>
-      <Image src={Profile.result.member.profileImage} alt='profile' />
-      <Name>{Profile.result.member.nickname}</Name>
-    </ProFileContainer>
-    <Btn>
-      <LinkStyled to="/day">하루 기록</LinkStyled></Btn>
-    <Btn><LinkStyled to="/quiz">하루 퀴즈</LinkStyled></Btn>
-    <Btn><LinkStyled to="/stretching">하루 스트레칭</LinkStyled></Btn>
-
+      <ProFileContainer>
+        <Image src={Profile.result.member.profileImage} alt='profile' />
+        <Name>{Profile.result.member.nickname}</Name>
+      </ProFileContainer>
+      <LinkStyled to='/day'>
+        <Btn>하루 기록</Btn>
+      </LinkStyled>
+      <LinkStyled to='/quiz'>
+        <Btn>하루 퀴즈</Btn>
+      </LinkStyled>
+      <LinkStyled to='/stretching'>
+        <Btn>하루 스트레칭</Btn>
+      </LinkStyled>
     </Container>
   );
 }

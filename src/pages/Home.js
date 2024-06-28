@@ -10,13 +10,7 @@ const Container = styled.div`
 
 const Box = styled.div`
   display: flex;
-    justify-content: space-between;
-`;
-
-const Text = styled.div`
-  font-size: 18px;
-  margin-top: 40px;
-  color: #676767;
+  justify-content: space-between;
 `;
 
 export default function Home() {
@@ -28,7 +22,7 @@ export default function Home() {
           <TodayBox />
           <ProfileBox />
         </Box>
-        <div style={{marginTop:"130px"}}></div>
+        <div style={{ marginTop: '130px' }}></div>
       </Container>
     </>
   );

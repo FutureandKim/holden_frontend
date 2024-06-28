@@ -64,34 +64,9 @@ const Btn = styled.button`
   border-radius: 12px;
   border: 1px solid #e3e3e3;
   color: #fff;
+  background-color: #2b5f88;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-`;
-
-const DayBtn = styled.button`
-  padding: 0 25px 0 10px;
-  margin-right: 10px;
-  font-size: 16px;
-  border: none;
-  background: #fff;
-  cursor: pointer;
-  font-family: Pretendard-Light;
-  ${(props) =>
-    props.selected &&
-    css`
-      color: #2b5f88;
-      font-family: Pretendard-Bold;
-    `};
-`;
-
-const Text = styled.div`
-  font-size: 17px;
-  margin-left: 30px;
-`;
-
-const TimeText = styled.div`
-  font-size: 17px;
-  margin-top: 20px;
 `;
 
 export default function CreateNew() {
@@ -142,12 +117,7 @@ export default function CreateNew() {
             onChange={(e) => setSpecial(e.target.value)}
           />
           <Line />
-          <Btn
-            style={{ background: '#2B5F88', fontFamily: 'Pretendard-Medium' }}
-            onClick={handleUserInput}
-          >
-            하루 기록하기
-          </Btn>
+          <Btn onClick={handleUserInput}>하루 기록하기</Btn>
         </Form>
       </Container>
     </>
