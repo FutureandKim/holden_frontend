@@ -50,45 +50,12 @@ const Quiz = () => {
   const [quizData, setQuizData] = useState([]);
   const [currentQuiz, setCurrentQuiz] = useState(null);
 
-  // quiz.json에서 퀴즈 데이터 로드
-  useEffect(() => {
-    fetch('../api/json/quiz.json')
-      .then((response) => response.json())
-      .then((data) => {
-        setQuizData(data.result);
-        selectRandomQuiz(data.result);
-      })
-      .catch((error) => console.error('퀴즈 데이터 로딩 중 오류 발생:', error));
-  }, []);
-
-  // 랜덤 퀴즈 선택
-  const selectRandomQuiz = (quizzes) => {
-    if (quizzes.length > 0) {
-      const randomIndex = Math.floor(Math.random() * quizzes.length);
-      setCurrentQuiz(quizzes[randomIndex]);
-    }
-  };
-
   return (
     <>
       <Header />
       <Container>
         <PageName>하루 퀴즈</PageName>
-        {currentQuiz ? (
-          <>
-            <Text>{currentQuiz.question}</Text>
-            <QuizContainer>
-              <QuizText>Q. {currentQuiz.quiz}</QuizText>
-              <AnswerContainer>
-                {currentQuiz.options.map((option, index) => (
-                  <Answer key={index}>{`${index + 1}. ${option}`}</Answer>
-                ))}
-              </AnswerContainer>
-            </QuizContainer>
-          </>
-        ) : (
-          <Text>퀴즈를 불러오는 중...</Text>
-        )}
+        
       </Container>
     </>
   );

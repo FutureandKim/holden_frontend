@@ -108,7 +108,7 @@ const Pose = () => {
       <Container>
         <Div>
           {time === 0 ? null : <Img src={pose} alt='포즈' />}
-          {time === 0 ? <Webcam height={400} /> : null}
+          {time === 0 ? <div style={{ transform: 'scaleX(-1)' }}> <Webcam height={400} /> </div>: null}
         </Div>
 
         <Div>
