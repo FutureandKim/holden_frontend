@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import ShowTodayRecord from '../components/ShowTodayRecord';
+import ShowSomeDay from '../components/ShowSomeDay'; // Import ShowSomeDay component
 
 const Container = styled.div`
   margin: 0 17% 0 17%;
@@ -18,12 +19,12 @@ const Text = styled.div`
   margin-top: 100px;
 `;
 
-//가로배열
 const Div = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 `;
+
 const LeftContainer = styled.div`
   width: 50%;
 `;
@@ -32,7 +33,7 @@ const RightContainer = styled.div`
   width: 50%;
 `;
 
-const Date = styled.input`
+const DateInput = styled.input`
   font-size: 25px;
   margin-top: 15px;
   width: 80%;
@@ -56,6 +57,17 @@ const FindBtn = styled.button`
 `;
 
 const Day = () => {
+  const [selectedDate, setSelectedDate] = useState('');
+  const [showRecords, setShowRecords] = useState(false); // State to toggle showing records
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const handleFindBtnClick = () => {
+    setShowRecords(true); // Show records when button is clicked
+  };
+
   return (
     <>
       <Header />
@@ -64,12 +76,26 @@ const Day = () => {
         <Div>
           <LeftContainer>
             <Text>다른 날에는 무슨일이 있었을까요?</Text>
-            <Date type='date' />
-            <FindBtn>찾아보기</FindBtn>
+            <DateInput
+              type='date'
+              value={selectedDate}
+              onChange={handleDateChange}
+            />
+            <FindBtn onClick={handleFindBtnClick}>찾아보기</FindBtn>
           </LeftContainer>
           <RightContainer>
-            <Text>오늘 기록</Text>
-            <ShowTodayRecord />
+            {showRecords && ( // Render ShowSomeDay only if showRecords is true
+              <>
+                <Text>선택한 날짜의 기록</Text>
+                <ShowSomeDay date={selectedDate} /> {/* Pass selectedDate to ShowSomeDay */}
+              </>
+            )}
+            {!showRecords && (
+              <>
+                <Text>오늘 기록</Text>
+                <ShowTodayRecord />
+              </>
+            )}
           </RightContainer>
         </Div>
       </Container>
