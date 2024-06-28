@@ -55,11 +55,13 @@ const LinkStyled = styled(Link)`
 `;
 
 export default function ProfileBox() {
+  const name = localStorage.getItem('name');
+  const profile_image = localStorage.getItem('profileImage');
   return (
     <Container>
       <ProFileContainer>
-        <Image src={Profile.result.member.profileImage} alt='profile' />
-        <Name>{Profile.result.member.nickname}</Name>
+        <Image src={profile_image} alt='profile' />
+        <Name>{name}</Name>
       </ProFileContainer>
       <LinkStyled to='/day'>
         <Btn>하루 기록</Btn>

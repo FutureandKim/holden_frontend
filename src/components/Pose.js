@@ -93,17 +93,15 @@ const Pose = () => {
 
   const handleNextClick = () => {
     setPose(getRandomPose());
-    setTime(3); // 타이머 초기화
+    setTime(3);
   };
 
   const handlePrevClick = () => {
     if (previousPose) {
       setPose(previousPose);
-      setTime(3); // 타이머 초기화
+      setTime(3);
     }
   };
-
-  //타이머가 0이되면 현재포즈를 이전포즈로 저장
 
   return (
     <>

@@ -60,7 +60,7 @@ const Btn = styled.button`
   height: 70px;
   margin-top: 20px;
   padding: 15px 20px;
-  font-size: 18px;
+  font-size: 25px;
   border-radius: 12px;
   border: 1px solid #e3e3e3;
   color: #fff;
@@ -71,14 +71,13 @@ const Btn = styled.button`
 
 export default function CreateNew() {
   // 사용자가 입력한 내용 추출
-  const [what, setWhat] = useState(''); // 무엇을 했는지
-  const [food, setFood] = useState(''); // 무엇을 먹었는지
+  const [category, setCategory] = useState(''); // 무엇을 했는지
+  const [what, setWhat] = useState(''); // 무엇을 먹었는지
   const [who, setWho] = useState(''); // 누구랑 했는지
   const [where, setWhere] = useState(''); // 어디서 했는지
-  const [special, setSpecial] = useState(''); // 특별한 일이 있었는지
 
   const handleUserInput = () => {
-    console.log(what, food, who, where, special);
+    console.log(category, what, who, where);
   };
 
   return (
@@ -87,17 +86,17 @@ export default function CreateNew() {
         <Title>하루 기록하기</Title>
         <Line />
         <Form>
-          <Label>지금 뭐하시나요?</Label>
+          <Label>무엇을 했나요?</Label>
+          <Input
+            type='text'
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+          <Label>무엇을 했나요? / 무슨 음식을 먹었나요?</Label>
           <Input
             type='text'
             value={what}
             onChange={(e) => setWhat(e.target.value)}
-          />
-          <Label>무엇을 먹었나요?</Label>
-          <Input
-            type='text'
-            value={food}
-            onChange={(e) => setFood(e.target.value)}
           />
           <Label>누구랑 했나요?</Label>
           <Input
@@ -111,13 +110,8 @@ export default function CreateNew() {
             value={where}
             onChange={(e) => setWhere(e.target.value)}
           />
-          <Label>특별한 일이 있었나요?</Label>
-          <Textarea
-            value={special}
-            onChange={(e) => setSpecial(e.target.value)}
-          />
           <Line />
-          <Btn onClick={handleUserInput}>하루 기록하기</Btn>
+          <Btn onClick={handleUserInput}>기록하기</Btn>
         </Form>
       </Container>
     </>
