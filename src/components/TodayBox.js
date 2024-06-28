@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { TodayRecord} from '../api/auth/TodayRecord';
+import { TodayRecord } from '../api/auth/TodayRecord';
 
 const Container = styled.div`
   width: 500px;
@@ -103,9 +103,9 @@ export default function CreateNew() {
       };
 
       const response = await TodayRecord(data);
-      console.log("Record created successfully:", response);
+      console.log('Record created successfully:', response);
     } catch (error) {
-      console.error("Failed to create record:", error);
+      console.error('Failed to create record:', error);
     }
   };
 

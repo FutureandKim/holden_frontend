@@ -32,7 +32,7 @@ const AnswerContainer = styled.div`
 `;
 
 const Answer = styled.div`
-display: flex;
+  display: flex;
   justify-content: center;
   width: 140px;
   height: 40px;
@@ -41,8 +41,8 @@ display: flex;
   font-size: 25px;
   border-radius: 12px;
   border: 1px solid #e3e3e3;
-  color: ${props => props.selected ? '#fff' : '#000'};
-  background-color: ${props => props.selected ? '#2b5f88' : '#fff'};
+  color: ${(props) => (props.selected ? '#fff' : '#000')};
+  background-color: ${(props) => (props.selected ? '#2b5f88' : '#fff')};
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   align-items: center;
@@ -58,7 +58,6 @@ const ResultText = styled.div`
 const NextButton = styled.button`
   border: none;
   padding: 10px 20px;
-
 `;
 
 const Quiz = () => {
@@ -85,7 +84,8 @@ const Quiz = () => {
 
   const handleAnswerClick = (optionIndex) => {
     const newSelectedAnswers = [...selectedAnswers];
-    newSelectedAnswers[currentQuizIndex] = quizData[currentQuizIndex][`option${optionIndex + 1}`];
+    newSelectedAnswers[currentQuizIndex] =
+      quizData[currentQuizIndex][`option${optionIndex + 1}`];
     setSelectedAnswers(newSelectedAnswers);
   };
 
@@ -133,11 +133,14 @@ const Quiz = () => {
             <>
               <QuizText>{quizData[currentQuizIndex]?.quiz}</QuizText>
               <AnswerContainer>
-                {[0, 1, 2].map(optionIndex => (
+                {[0, 1, 2].map((optionIndex) => (
                   <Answer
                     key={optionIndex}
                     onClick={() => handleAnswerClick(optionIndex)}
-                    selected={selectedAnswers[currentQuizIndex] === quizData[currentQuizIndex][`option${optionIndex + 1}`]}
+                    selected={
+                      selectedAnswers[currentQuizIndex] ===
+                      quizData[currentQuizIndex][`option${optionIndex + 1}`]
+                    }
                   >
                     {quizData[currentQuizIndex][`option${optionIndex + 1}`]}
                   </Answer>

@@ -71,9 +71,7 @@ const poses = [
     `${process.env.PUBLIC_URL}/assets/pose/right-side.png`,
     `${process.env.PUBLIC_URL}/assets/pose/round.png`,
   ],
-  [
-    `${process.env.PUBLIC_URL}/assets/pose/sit.png`,
-  ],
+  [`${process.env.PUBLIC_URL}/assets/pose/sit.png`],
 ];
 
 const getRandomPoses = () => {

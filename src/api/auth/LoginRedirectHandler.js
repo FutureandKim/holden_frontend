@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Header from '../../components/Header';
+import { requestForToken } from '../../firebase'; // Import Firebase FCM token function
 
 const Container = styled.div`
   display: flex;
@@ -32,7 +33,24 @@ const LoginRedirectHandler = () => {
             response.data.result.member.profileImage
           );
 
-          window.location.href = '/';
+          // Request Firebase FCM token
+          requestForToken().then((token) => {
+            // Send token and other data to server
+            axios.post(`${process.env.REACT_APP_BASE_URL}/user/firebase/token`, {
+              userId: response.data.result.userId, // Adjust according to your response structure
+              token,
+            }, {
+              headers: { // Note the corrected placement and syntax here
+                Authorization: `${localStorage.getItem('accessToken')}`,
+              },
+            }).then((response) => {
+              console.log('Firebase token sent:', response.data);
+            }).catch((error) => {
+              console.error('Error sending Firebase token:', error);
+            });
+          });
+
+          //window.location.href = '/';
         })
         .catch((error) => {
           console.error('Login failed:', error);

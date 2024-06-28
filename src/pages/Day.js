@@ -84,7 +84,7 @@ const Day = () => {
             <FindBtn onClick={handleFindBtnClick}>찾아보기</FindBtn>
           </LeftContainer>
           <RightContainer>
-            {showRecords && ( 
+            {showRecords && (
               <>
                 <Text>선택한 날짜의 기록</Text>
                 <ShowSomeDay date={selectedDate} /> {}
