@@ -86,13 +86,13 @@ const Day = () => {
           <RightContainer>
             {showRecords && (
               <>
-                <Text>선택한 날짜의 기록</Text>
+                <Text style={{fontFamily: "Pretendard-Medium"}}>{selectedDate}의 기록</Text>
                 <ShowSomeDay date={selectedDate} /> {}
               </>
             )}
             {!showRecords && (
               <>
-                <Text>오늘 기록</Text>
+                <Text style={{fontFamily: "Pretendard-Medium"}}>오늘의 기록</Text>
                 <ShowTodayRecord />
               </>
             )}

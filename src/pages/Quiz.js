@@ -17,11 +17,11 @@ const QuizContainer = styled.div`
   margin-top: 50px;
   border: 1px solid #e3e3e3;
   border-radius: 12px;
-  padding: 20px;
+  padding: 30px;
 `;
 
 const QuizText = styled.div`
-  font-size: 27px;
+  font-size: 35px;
 `;
 
 const AnswerContainer = styled.div`
@@ -34,11 +34,11 @@ const AnswerContainer = styled.div`
 const Answer = styled.div`
   display: flex;
   justify-content: center;
-  width: 140px;
-  height: 40px;
-  padding: 20px;
-  margin-bottom: 20px;
-  font-size: 25px;
+  width: 190px;
+  height: 50px;
+  padding: 30px;
+  margin-bottom: 50px;
+  font-size: 40px;
   border-radius: 12px;
   border: 1px solid #e3e3e3;
   color: ${(props) => (props.selected ? '#fff' : '#000')};
@@ -49,7 +49,7 @@ const Answer = styled.div`
 `;
 
 const ResultText = styled.div`
-  font-size: 20px;
+  font-size: 30px;
   margin-top: 10px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -58,6 +58,15 @@ const ResultText = styled.div`
 const NextButton = styled.button`
   border: none;
   padding: 10px 20px;
+  font-size: 30px;
+  border-radius: 12px;
+  margin-right: 20px;
+  background-color: #fff;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  &:hover {
+    background-color: #f3f3f3;
+  }
 `;
 
 const Quiz = () => {
@@ -152,9 +161,9 @@ const Quiz = () => {
                 </ResultText>
               )}
               {!showResult && (
-                <button onClick={handleShowResult}>정답 확인</button>
+                <NextButton onClick={handleShowResult}>정답 확인</NextButton>
               )}
-              <NextButton onClick={handleNextQuiz}>다음 문제</NextButton>
+              <NextButton onClick={handleNextQuiz} style={{backgroundColor:"#2B5F88", color:"#fff"}}>다음 문제</NextButton>
             </>
           ) : (
             <>
