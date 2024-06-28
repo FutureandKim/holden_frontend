@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { TodayRecord} from '../api/auth/TodayRecord';
 
 const Container = styled.div`
   width: 500px;
@@ -48,11 +48,16 @@ const Input = styled.input`
   font-size: 20px;
 `;
 
-const Textarea = styled.textarea`
+const Select = styled.select`
   margin-top: 10px;
   padding: 10px;
   border: 1px solid #e3e3e3;
   border-radius: 8px;
+  font-size: 20px;
+`;
+
+const Option = styled.option`
+  font-size: 20px;
 `;
 
 const Btn = styled.button`
@@ -70,14 +75,38 @@ const Btn = styled.button`
 `;
 
 export default function CreateNew() {
+  const [categoryList, setCategoryList] = useState([
+    '아침',
+    '점심',
+    '저녁',
+    '기타 활동',
+  ]);
   // 사용자가 입력한 내용 추출
   const [category, setCategory] = useState(''); // 무엇을 했는지
   const [what, setWhat] = useState(''); // 무엇을 먹었는지
   const [who, setWho] = useState(''); // 누구랑 했는지
   const [where, setWhere] = useState(''); // 어디서 했는지
 
-  const handleUserInput = () => {
-    console.log(category, what, who, where);
+  const handleUserInput = async () => {
+    try {
+      const now = new Date();
+      const today = now.toISOString().split('T')[0]; // YYYY-MM-DD
+      const whatTime = now.toTimeString().split(' ')[0]; // HH:MM:SS
+
+      const data = {
+        today,
+        category,
+        whatIs: what,
+        whoIs: who,
+        whereIs: where,
+        whatTime,
+      };
+
+      const response = await TodayRecord(data);
+      console.log("Record created successfully:", response);
+    } catch (error) {
+      console.error("Failed to create record:", error);
+    }
   };
 
   return (
@@ -87,11 +116,19 @@ export default function CreateNew() {
         <Line />
         <Form>
           <Label>무엇을 했나요?</Label>
-          <Input
-            type='text'
+          <Select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-          />
+          >
+            <Option value='' disabled>
+              카테고리를 선택하세요
+            </Option>
+            {categoryList.map((cat) => (
+              <Option key={cat} value={cat}>
+                {cat}
+              </Option>
+            ))}
+          </Select>
           <Label>무엇을 했나요? / 무슨 음식을 먹었나요?</Label>
           <Input
             type='text'

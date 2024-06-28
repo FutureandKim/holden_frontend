@@ -50,7 +50,7 @@ export default function Login() {
       <Logo src={`${process.env.PUBLIC_URL}/assets/logo.png`} alt='logo' />
       <Slogan>치매 환자를 위한 뇌운동 서비스</Slogan>
       <a href={KAKAO_AUTH_URL}>
-      <LoginBtn>카카오로 로그인/회원가입</LoginBtn>
+        <LoginBtn>카카오로 로그인/회원가입</LoginBtn>
       </a>
       <Text>
         회원가입 시 HOLDEN의 <Bold>서비스 이용 약관</Bold>과{' '}

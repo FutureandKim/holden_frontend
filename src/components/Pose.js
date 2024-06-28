@@ -83,7 +83,7 @@ const Pose = () => {
       if (time > 0) {
         setTime((prevTime) => prevTime - 1);
       }
-      if(time === 0) {
+      if (time === 0) {
         setPreviousPose(pose);
       }
     }, 1000);
@@ -110,14 +110,15 @@ const Pose = () => {
           {time === 0 ? null : <Img src={pose} alt='포즈' />}
           {time === 0 ? <Webcam height={400} /> : null}
         </Div>
-        
+
         <Div>
           <PrevBtn onClick={handlePrevClick} disabled={!previousPose}>
             <AgainImg src={`${process.env.PUBLIC_URL}/assets/again.png`} />
           </PrevBtn>
-          <NextBtn onClick={handleNextClick}>{time === 0 ? "다음" : time}</NextBtn>
+          <NextBtn onClick={handleNextClick}>
+            {time === 0 ? '다음' : time}
+          </NextBtn>
         </Div>
-        
       </Container>
     </>
   );

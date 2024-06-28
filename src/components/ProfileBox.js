@@ -16,7 +16,7 @@ const ProFileContainer = styled.div`
   text-align: center;
   border-radius: 12px;
   border: 1px solid #e3e3e3;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
 `;
 
