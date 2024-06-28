@@ -1,0 +1,16 @@
+{
+  "is_success": true,
+  "code": 1000,
+  "message": "요청에 성공했습니다.",
+  "result": {
+    "accessToken": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiYXV0aCI6IiIsImV4cCI6MTcxOTQ0OTQyNn0.F5RtJgvzFuuP2E3D96WQEeZ8prQnMpw4yW9kU0wf9tTEh3h8PZacnf5q9OvTCmj9O3r0q5sucE1gldepRlH8eA",
+    "member": {
+      "memberId": 1,
+      "kakaoId": "3597235263",
+      "nickname": "강예은",
+      "profileImage": "http://k.kakaocdn.net/dn/bFicwo/btsHqatBCj8/yalsqIbiLt9iA1KAsKWIZK/img_640x640.jpg",
+      "points": 5000,
+      "studies": []
+    }
+  }
+}
