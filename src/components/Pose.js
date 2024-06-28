@@ -56,27 +56,35 @@ const AgainImg = styled.img`
 `;
 
 const poses = [
-  `${process.env.PUBLIC_URL}/assets/pose/circle.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/heart.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/left-neck.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/left-side.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/manse.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/right-hand.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/right-neck.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/right-side.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/round.png`,
-  `${process.env.PUBLIC_URL}/assets/pose/sit.png`,
+  [
+    `${process.env.PUBLIC_URL}/assets/pose/circle.png`,
+    `${process.env.PUBLIC_URL}/assets/pose/heart.png`,
+    `${process.env.PUBLIC_URL}/assets/pose/left-neck.png`,
+  ],
+  [
+    `${process.env.PUBLIC_URL}/assets/pose/left-side.png`,
+    `${process.env.PUBLIC_URL}/assets/pose/manse.png`,
+    `${process.env.PUBLIC_URL}/assets/pose/right-hand.png`,
+  ],
+  [
+    `${process.env.PUBLIC_URL}/assets/pose/right-neck.png`,
+    `${process.env.PUBLIC_URL}/assets/pose/right-side.png`,
+    `${process.env.PUBLIC_URL}/assets/pose/round.png`,
+  ],
+  [
+    `${process.env.PUBLIC_URL}/assets/pose/sit.png`,
+  ],
 ];
 
-const getRandomPose = () => {
+const getRandomPoses = () => {
   const randomIndex = Math.floor(Math.random() * poses.length);
   return poses[randomIndex];
 };
 
 const Pose = () => {
-  const [time, setTime] = useState(3);
-  const [pose, setPose] = useState(getRandomPose());
-  const [previousPose, setPreviousPose] = useState(null);
+  const [time, setTime] = useState(5);
+  const [posesToShow, setPosesToShow] = useState(getRandomPoses());
+  const [previousPoses, setPreviousPoses] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -84,22 +92,22 @@ const Pose = () => {
         setTime((prevTime) => prevTime - 1);
       }
       if (time === 0) {
-        setPreviousPose(pose);
+        setPreviousPoses(posesToShow);
       }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [time]);
+  }, [time, posesToShow]);
 
   const handleNextClick = () => {
-    setPose(getRandomPose());
-    setTime(3);
+    setPosesToShow(getRandomPoses());
+    setTime(5);
   };
 
   const handlePrevClick = () => {
-    if (previousPose) {
-      setPose(previousPose);
-      setTime(3);
+    if (previousPoses) {
+      setPosesToShow(previousPoses);
+      setTime(5);
     }
   };
 
@@ -107,12 +115,22 @@ const Pose = () => {
     <>
       <Container>
         <Div>
-          {time === 0 ? null : <Img src={pose} alt='포즈' />}
-          {time === 0 ? <div style={{ transform: 'scaleX(-1)' }}> <Webcam height={400} /> </div>: null}
+          {time === 0 ? null : (
+            <>
+              {posesToShow.map((pose, index) => (
+                <Img key={index} src={pose} alt={`포즈 ${index + 1}`} />
+              ))}
+            </>
+          )}
+          {time === 0 ? (
+            <div style={{ transform: 'scaleX(-1)' }}>
+              <Webcam height={400} />
+            </div>
+          ) : null}
         </Div>
 
         <Div>
-          <PrevBtn onClick={handlePrevClick} disabled={!previousPose}>
+          <PrevBtn onClick={handlePrevClick} disabled={!previousPoses}>
             <AgainImg src={`${process.env.PUBLIC_URL}/assets/again.png`} />
           </PrevBtn>
           <NextBtn onClick={handleNextClick}>
