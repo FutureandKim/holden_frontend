@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
+
+const Strong = styled.strong`
+  font-weight: bold;
+  font-size: 20px;
+`;
+
 
 const ShowTodayRecord = () => {
   const [records, setRecords] = useState([]);
@@ -38,19 +45,19 @@ const ShowTodayRecord = () => {
             }}
           >
             <p>
-              <strong>카테고리:</strong> {record.category}
+              <Strong>일정 </Strong> {record.category}
             </p>
             <p>
-              <strong>무엇인가:</strong> {record.whatIs}
+              <Strong>무엇 </Strong> {record.whatIs}
             </p>
             <p>
-              <strong>누구인가:</strong> {record.whoIs}
+              <Strong>누구 </Strong> {record.whoIs}
             </p>
             <p>
-              <strong>어디에서:</strong> {record.whereIs}
+              <Strong>어디 </Strong> {record.whereIs}
             </p>
             <p>
-              <strong>시간:</strong> {record.whatTime}
+              <Strong>시간 </Strong> {record.whatTime}
             </p>
           </div>
         ))}

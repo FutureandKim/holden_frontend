@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import { ShowQuiz } from '../api/ShowQuiz';
+import { QuizShow} from '../api/QuizShow'
 
 const Container = styled.div`
   margin: 0 17% 0 17%;
@@ -70,7 +70,7 @@ const Quiz = () => {
   useEffect(() => {
     const fetchQuiz = async () => {
       try {
-        const data = await ShowQuiz();
+        const data = await QuizShow();
         setQuizData(data);
         setSelectedAnswers(new Array(data.length).fill(''));
       } catch (error) {
