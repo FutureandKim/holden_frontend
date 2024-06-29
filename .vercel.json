@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/user/kakao/:path*",
+      "source": "/user/:path*",
       "destination": "http://43.200.42.163:8080/:path*"
     },
     {
