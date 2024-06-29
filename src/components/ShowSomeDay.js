@@ -15,7 +15,7 @@ const ShowSomeDay = ({ date }) => {
     const fetchRecords = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/record?date=${date}`,
+          `/record?date=${date}`,
           {
             headers: {
               Authorization: `${localStorage.getItem('accessToken')}`,
