@@ -3,7 +3,7 @@ import axios from 'axios';
 export const QuizShow = async () => {
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/record/quiz`,
+      `/record/quiz`,
       {
         headers: {
           Authorization: `${localStorage.getItem('accessToken')}`,
