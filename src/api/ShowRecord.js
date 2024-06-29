@@ -4,7 +4,7 @@ export const ShowRecord = async () => {
   const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
   try {
     const response = await axios.get(
-      `/record?date=${date}`,
+      `${process.env.REACT_APP_BASE_URL}/record?date=${date}`,
       {
         headers: {
           Authorization: `${localStorage.getItem('accessToken')}`,

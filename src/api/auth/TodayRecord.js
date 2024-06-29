@@ -3,7 +3,7 @@ import axios from 'axios';
 export const TodayRecord = async (data) => {
   try {
     const response = await axios.post(
-      `/record`,
+      `${process.env.REACT_APP_BASE_URL}/record`,
       data,
       {
         headers: {

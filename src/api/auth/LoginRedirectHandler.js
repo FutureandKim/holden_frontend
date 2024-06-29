@@ -22,7 +22,7 @@ const LoginRedirectHandler = () => {
 
     if (code) {
       axios
-        .get(`/user/kakao/token?code=${code}`)
+        .get(`${process.env.REACT_APP_BASE_URL}/user/kakao/token?code=${code}`)
         .then((response) => {
           console.log('Login success:', response.data.result);
           localStorage.setItem('accessToken', response.data.result.accessToken);
