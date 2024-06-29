@@ -17,7 +17,7 @@ const ShowTodayRecord = () => {
       const date = new Date().toISOString().split('T')[0]; // 현재 날짜 (YYYY-MM-DD)
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/record?date=${date}`,
+          `/record?date=${date}`,
           {
             headers: {
               Authorization: `${localStorage.getItem('accessToken')}`,
