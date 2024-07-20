@@ -73,4 +73,4 @@
 <br/>
  
 ## 💁‍♀️ 기타사항
-- 한국외국어대학교 2024 HUFSummerHackerton 우수상 수상
+- 한국외국어대학교 2024 HUFS Summer Hackathon 우수상 수상
